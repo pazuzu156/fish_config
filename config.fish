@@ -19,6 +19,10 @@ abbr -a vs v -s $argv
 abbr -a enspot spot enable
 abbr -a disspot spot disable
 
+# baloo
+abbr -a enbaloo balooctl enable
+abbr -a disbaloo balooctl disable
+
 # Get a plasma session going on TTY login
 if test ! -n "$DISPLAY"
   read -l SPS -P 'Need to start plasma? [Y/n] '
