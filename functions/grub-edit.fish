@@ -1,4 +1,4 @@
 function grub-edit -d 'Edit grub config and rebuild it'
-  sudo nvim /etc/default/grub
+  v -s /etc/default/grub
   grub-build
 end
