@@ -7,7 +7,7 @@ function mirrors -d 'Update pacman mirrorlist'
       sudo cp $MPATH $MPATH.bak
   end
 
-  reflector -c US -f 10 -l 20 --sort score --save $MPATH --verbose
+  sudo reflector -c US -f 10 -l 20 --sort score --save $MPATH --verbose
 
   if test $status -eq 0
     read -l UP -P 'Completed. Would you like to update now? [y/N] '

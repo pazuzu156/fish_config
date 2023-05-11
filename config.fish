@@ -23,6 +23,12 @@ abbr -a disspot spot disable
 abbr -a enbaloo balooctl enable
 abbr -a disbaloo balooctl disable
 
+# vksetup
+abbr -a vks vksetup -p $argv
+abbr -a vkr vkremove -p $argv
+abbr -a vkms vkmultisetup -p $argv
+abbr -a vkmr vkmultiremove -p $argv
+
 # Get a plasma session going on TTY login
 if test ! -n "$DISPLAY"
   read -l SPS -P 'Need to start plasma? [Y/n] '
