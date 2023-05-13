@@ -14,6 +14,7 @@ abbr -a w startw
 abbr -a bt bpytop
 abbr -a cls clear
 abbr -a vs v -s $argv
+abbr -a kfish kate $HOME/.config/fish
 
 # spotifyd
 abbr -a enspot spot enable
