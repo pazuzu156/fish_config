@@ -1,3 +1,4 @@
 conf.d/omf.fish
 fish_variables
 functions/libera.fish
+functions/kdesrc-build.fish
