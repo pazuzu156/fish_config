@@ -9,13 +9,23 @@ function ping -d 'Ping Arch site'
     if test -n "$argv[1]"
       set count $argv[1]
     end
+
+    if test -n "$argv[2]"
+      set server $argv[2]
+    end
+
+    test $count -gt 1
+      and set -l times times
+      or set -l times time
+    
+    echo "Pinging $server $count $times..."
+    eval command ping -c $count $server
+  else
+    if test -n "$argv"
+      set server $argv
+    end
+
+    echo "Pinging $server..."
+    eval command ping $server
   end
-
-  # add an s at the end of the echo if count > 1
-  test $count -gt 1
-    and set -l times times
-    or set -l times time
-
-  echo "Pinging $server $count $times..."
-  eval command ping -c $count archlinux.org
 end
