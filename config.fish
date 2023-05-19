@@ -15,6 +15,7 @@ abbr -a bt bpytop
 abbr -a cls clear
 abbr -a vs v -s $argv
 abbr -a kfish kate $HOME/.config/fish
+abbr -a st speedtest --bytes --secure
 
 # spotifyd
 abbr -a enspot spot enable
