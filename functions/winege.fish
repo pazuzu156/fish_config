@@ -1,27 +1,44 @@
-function winege
-  argparse -n winege 'v/version' -- $argv
-  set -l PROTON_ENABLE_NVAPI 1
-  set -l DXVK_ENABLE_NVAPI 1
-  set -l PROTON_HIDE_NVIDIA_GPU 1
-  set -l VKD3D_CONFIG dxr11
+function winege -d 'Run a wine GE tool on a given prefix'
+  argparse -n winege 'v/version=' 'p/prefix=' -- $argv
+    or return
 
   set -l WINE_BASE $HOME/.config/heroic/tools/wine
-  set -l WINE null
+  set -l WINE
+  set -l PREFIX
+
+  # get prefix, else assume current directory is prefix
+  if set -q _flag_p
+    if test -d "$_flag_p/drive_c"
+      set PREFIX "$_flag_p"
+    else
+      echo "$_flag_p is not a valid wine prefix!"
+
+      return
+    end
+  else
+    set PREFIX (pwd)
+  end
 
   if set -q _flag_v
-    test -d "$WINE_BASE/$argv"
-      and set WINE "$WINE_BASE/$argv"
-      or test -d "$WINE_BASE/Wine-GE-Proton$argv"
-        and set WINE "$WINE_BASE/Wine-GE-Proton$argv"
-        or echo "That version of wine couldn't be found!"
+    if test -d "$WINE_BASE/$_flag_v"
+      set WINE "$WINE_BASE/$_flag_v"
+    else if test -d "$WINE_BASE/Wine-GE-Proton$_flag_v"
+      set WINE "$WINE_BASE/Wine-GE-Proton$_flag_v"
 
-    echo $WINE
-#     if test -d "$WINE_BASE/Wine-GE-Proton$argv"
-#       set WINE "$WINE_BASE/Wine-GE-Proton$argv"
-#     else
-#       echo 'That version of wine couldn\'t be found!'
-#     end
+      PROTON_ENABLE_NVAPI=1 DXVK_ENABLE_NVAPI=1 PROTON_HIDE_NVIDIA_GPU=0 VKD3D_CONFIG=dxr11 WINEPREFIX=$PREFIX $WINE/bin/$argv
+    else
+      echo "That version of wine couldn't be found!"
+
+      return
+    end
   else
-    echo 'Please specify a wine version!'
+    printf "%s\n\n" "List of wine versions:"
+
+    for i in $WINE_BASE/*
+      if test -d $i
+        set -l V (string split '/' $i)
+        echo $V[-1]
+      end
+    end
   end
 end
