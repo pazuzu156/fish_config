@@ -1,5 +1,6 @@
 function vkmultiremove -d 'Recursively remove dxvk and vkd3d in a prefixes directory'
-  argparse -n vkmultiremove 'p/prefixes' -- $argv
+  argparse -n vkmultiremove 'p/prefixes=' -- $argv
+    or return
 
   if set -q _flag_p
     set -l PREFIXES_PATH $argv'/'
