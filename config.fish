@@ -8,6 +8,11 @@ set -x EDITOR nvim
 # source aliases file
 source $HOME/.config/fish/aliases.fish
 
+# Wine GE stuff
+set -l GE_VERSION 8-7
+fish_add_path --path $HOME/.config/heroic/tools/wine/Wine-GE-Proton$GE_VERSION/bin
+set -e GE_VERSION
+
 # Get a plasma session going on TTY login
 if test ! -n "$DISPLAY"
   read -l SPS -P 'Need to start plasma? [Y/n] '

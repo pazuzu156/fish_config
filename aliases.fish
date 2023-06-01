@@ -20,8 +20,10 @@ abbr -a disspot spot disable
 abbr -a enbaloo balooctl enable
 abbr -a disbaloo balooctl disable
 
-# vksetup
-abbr -a vks vksetup -p $argv
-abbr -a vkr vkremove -p $argv
+# vksetup (..p at the end of an alias is the vk* command with the -p flag added)
+abbr -a vks vksetup
+abbr -a vkr vkremove
+abbr -a vksp vksetup -p $argv
+abbr -a vkrp vkremove -p $argv
 abbr -a vkms vkmultisetup -p $argv
 abbr -a vkmr vkmultiremove -p $argv

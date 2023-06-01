@@ -3,7 +3,7 @@ function vkmultisetup -d 'Recursively setup dxvk and vkd3d in a prefixes directo
     or return
 
   if set -q _flag_p
-    set -l PREFIXES_PATH $argv'/'
+    set -l PREFIXES_PATH $_flag_p'/'
 
     for i in $PREFIXES_PATH/*
       if test -d $i'/drive_c'
