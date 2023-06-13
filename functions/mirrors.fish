@@ -1,8 +1,13 @@
 function mirrors -d 'Update pacman mirrorlist'
-  argparse -n mirrors 'r/restore' -- $argv
+  argparse -n mirrors 'r/restore' 'n/noupdate' -- $argv
     or return
 
   set -l MPATH /etc/pacman.d/mirrorlist
+  set -l NO_UPDATE 0
+
+  if set -q _flag_n
+    set NO_UPDATE 1
+  end
 
   if set -q _flag_r
     if test -f $MPATH.bak
@@ -27,10 +32,14 @@ function mirrors -d 'Update pacman mirrorlist'
     sudo reflector -c US -f 10 -l 20 --sort score --save $MPATH --verbose
 
     if test $status -eq 0
-      read -l UP -P 'Completed. Would you like to update now? [y/N] '
-      switch $UP
-        case Y y
-          update
+      if [ $NO_UPDATE = 1 ]
+        echo 'Mirrorlist update completed.'
+      else
+        read -l UP -P 'Mirrorlist update completed. Would you like to update now? [y/N] '
+        switch $UP
+          case Y y
+            update
+        end
       end
     else
       echo 'An error occurred whilst doing this. Restoring backup'
