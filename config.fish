@@ -9,7 +9,7 @@ set -x EDITOR nvim
 source $HOME/.config/fish/aliases.fish
 
 # Wine GE stuff
-set -l GE_VERSION 8-7
+set -l GE_VERSION 8-8
 fish_add_path --path $HOME/.config/heroic/tools/wine/Wine-GE-Proton$GE_VERSION/bin
 set -e GE_VERSION
 
