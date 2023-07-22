@@ -1,14 +1,14 @@
 # random aliases
-abbr -a ycu yay-clean -u
+abbr -a pcu paru-clean -u
 abbr -a neo neofetch
-abbr -a yc yay-clean
+abbr -a pc paru-clean
 abbr -a :q exit
 abbr -a x startx
 abbr -a w startw
 abbr -a bt bpytop
 abbr -a cls clear
 abbr -a vs v -s $argv
-abbr -a kfish kate $HOME/.config/fish
+abbr -a fished code $HOME/.config/fish
 abbr -a st speedtest --bytes --secure
 abbr -a reload source $HOME/.config/fish/config.fish
 
